@@ -1,0 +1,230 @@
+// Copyright (c) 2015, Technische Universitaet Berlin
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions
+// are met:
+// - Redistributions of source code must retain the above copyright notice,
+//   this list of conditions and the following disclaimer.
+// - Redistributions in binary form must reproduce the above copyright
+//   notice, this list of conditions and the following disclaimer in the
+//   documentation and/or other materials provided with the distribution.
+// - Neither the name of the Technische Universitaet Berlin nor the names
+//   of its contributors may be used to endorse or promote products derived
+//   from this software without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+// TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+// OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+// OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+// USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+syntax = "proto3";
+
+package sensor;
+
+
+// Interface exported by the server.
+
+message Empty {
+
+}
+
+message Operation {
+
+     bool success = 1;
+}
+
+message Modality {
+
+     string ___modalityname = 1;
+     string ___params = 2;
+}
+    
+//TODO: Add definitions for camera, network parameters etc.
+
+message Gps {
+    
+             double accuracy = 1;
+             double altitude = 2;
+             double bearing = 3;
+             double latitude = 4;
+             double longitude = 5;
+             double status = 6;
+}
+
+message GpsList {
+    
+             repeated Gps data= 1;
+}
+
+message Acceleration {
+
+   	     double x = 1;
+             double y = 2;
+             double z = 3;
+
+}
+
+message Magneticfield {
+
+   double x = 1;
+   double y = 2;
+   double z = 3;
+    
+    //All values are in micro-Tesla (uT)
+}
+
+message Light {
+
+   double value = 1;
+    
+    //value measured in SI lux units
+}
+
+message Pressure {
+
+   double value = 1;
+    
+    //measured in hPa (millibar)
+}
+
+message Proximity {
+
+   double value = 1;   
+    //measured in centimeters
+}
+
+message Gravity {
+
+   double x = 1;
+   double y = 2;
+   double z = 3;
+    
+    //measured in m/s^2
+}
+
+message LinearAcceleration {
+
+   double x = 1;
+   double y = 2;
+   double z = 3;
+    
+    //acceleration = gravity + linear-acceleration
+
+}
+
+message Rotation {
+
+   double x = 1;
+   double y = 2;
+   double z = 3;
+   double other = 4;
+   double heading = 5;
+
+}
+
+message Orientation {
+
+   double azimuth = 1;
+   double pitch = 2;
+   double roll = 3;
+}
+
+message RelativeHumidity {
+
+   double value =1;
+}
+
+message Temperature {
+
+   double value = 1;
+}
+
+message MagneticFieldUncalibrated {
+
+   double x_uncalib = 1;
+   double z_uncalib = 2;
+   double y_uncalib = 3;
+   double x_bias = 4;
+   double y_bias = 5;
+   double z_bias = 6;
+}
+
+message GyroscopeUncalibrated {
+
+   double angspeedx = 1;
+   double angspeedy = 2;
+   double angspeedz = 3;
+   double driftx = 4;
+   double drifty = 5;
+   double driftz = 6;
+}
+
+message Network {
+
+  string name = 1;
+  double rssi = 2;
+  double averageRssiDb = 3;
+  double downloadSpeed = 4;
+  double uploadSpeed = 5;
+  double pingTime = 6;
+
+}
+
+message Camera {
+
+  bytes image = 1;
+  double encoded = 2;
+  double original = 3;
+  string camera_type = 4;
+
+} 
+
+message ModalityValue {
+
+  enum Type { 
+              GPS = 0; 
+              ACCELERATION = 1; 
+              MAGNETICFIELD = 2; 
+              LIGHT = 3; 
+              PRESSURE = 4;
+    	      PROXIMITY = 5;
+    	      GRAVITY = 6;
+    	      LINEARACCELERATION = 7;
+    	      ROTATION = 8;
+    	      ORIENTATIOM = 9;
+              RELATIVEHUMIDITY = 10;
+    	      TEMPERATURE = 11;
+              MAGNETICFIELDUNCALIBRATED = 12;
+    	      GYROSCOPEUNCALIBRATED = 13;
+              NETWORK = 14;
+              CAMERA = 15;
+           }
+  Type modalityname = 1;
+  Gps gps = 2;
+  Acceleration acceleration = 3;
+  Magneticfield magneticfield = 4;
+  Light light = 5;
+  Pressure pressure = 6;
+  Proximity proximity = 7;
+  Gravity gravity = 8;
+  LinearAcceleration linearacceleration = 9;
+  Rotation rotation= 10;
+  Orientation orientation = 11;
+  RelativeHumidity relativehumidity = 12;
+  Temperature temperature = 13;
+  MagneticFieldUncalibrated magneticfielduncalibrated =14;
+  GyroscopeUncalibrated gyroscopeuncalibrated = 15;
+  Network network =16;
+  Camera camera = 17;
+}
+
+

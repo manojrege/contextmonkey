@@ -1,0 +1,8 @@
+networkx==1.10
+zope.interface==4.0.5
+contextmonkey==1.0
+protobuf==3.2.0
+Requests==2.13.0
+Twisted==17.1.0rc1
+PyYAML==3.12
+zope==4.0
