@@ -37,7 +37,7 @@ __maintainer__ = "Manoj R. Rege"
 __email__ = "rege@tkn.tu-berlin.de"
 __status__ = "Prototype"
 
-import os, 
+import os
 import sys
 import inspect
 import random

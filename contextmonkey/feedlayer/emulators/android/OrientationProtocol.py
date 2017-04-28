@@ -43,13 +43,13 @@ from twisted.python.failure import Failure
 
 class OrientationProtocol(GeneralSensorProtocol):
 
-	sensorName = 'orientation'
+    sensorName = 'orientation'
     x = 0
     y = 0
     z = 0
 
     def sendData(self, uuid, **values):
-        """Issue a set command for orientation sensor.""""
+        """Issue a set command for orientation sensor."""
         if "x" in values:
             self.x = float(values["x"])
         else:
@@ -74,5 +74,5 @@ class OrientationProtocol(GeneralSensorProtocol):
         feed.log('MAGNETICFIELDPROTOCOL-sendData',self.sensorName+" End Time:"+str("%0.20f" % time.time())+" "+str(uuid))
 
     def getData(self):
-        """Issue a get command for orientation sensor.""""
+        """Issue a get command for orientation sensor."""
         pass

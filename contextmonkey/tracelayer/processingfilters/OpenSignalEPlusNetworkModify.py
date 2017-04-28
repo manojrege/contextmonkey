@@ -52,7 +52,7 @@ from contextmonkey.ContextMonkeyExceptions import FilterTraceError
 from contextmonkey.ContextMonkeyLogger import tracelayer
 
 @implementer(ITraceModify)
-class OpenSignalE-PlusNetworkModify(object):
+class OpenSignalEPlusNetworkModify(object):
     """Implementation of ITraceModfy interface for OpenSignal traces of E-Plus carrier."""
     
     filterattributes = None
